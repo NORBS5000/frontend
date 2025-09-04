@@ -148,19 +148,27 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-teal-50 p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 -z-10 opacity-20">
+        <div className="w-[600px] h-[600px] bg-gradient-to-br from-purple-400 via-blue-400 to-teal-400 rounded-full blur-3xl animate-float"></div>
+      </div>
+      <div className="absolute bottom-0 left-0 -z-10 opacity-20">
+        <div className="w-[500px] h-[500px] bg-gradient-to-tr from-teal-400 via-purple-400 to-blue-400 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
+      </div>
+
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-12">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-500 to-teal-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gradient-primary mb-4 animate-glow">
               Loan Dashboard
             </h1>
-            <p className="text-lg text-gray-600">Manage and review loan applications</p>
+            <p className="text-xl sm:text-2xl text-gray-700 font-medium">Manage and review loan applications</p>
           </div>
-          <div className="mt-6 flex flex-col lg:flex-row gap-4">
+          <div className="mt-10 flex flex-col lg:flex-row gap-6">
             <div className="relative flex-1">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
@@ -169,14 +177,14 @@ const Dashboard = () => {
                 placeholder="Search applications..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-10 py-3 border border-gray-300 rounded-xl w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm focus:shadow-md"
+                className="form-input pl-12 pr-12 py-4 text-lg shadow-lg focus:shadow-xl"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full p-1 transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full p-2 transition-all duration-200 hover:scale-110"
                 >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                 </button>
@@ -189,7 +197,7 @@ const Dashboard = () => {
                 setSortBy(field);
                 setSortOrder(order);
               }}
-              className="px-4 py-3 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm focus:shadow-md"
+              className="form-input py-4 text-lg shadow-lg focus:shadow-xl font-medium"
             >
               <option value="created_at-desc">📅 Newest First</option>
               <option value="created_at-asc">📅 Oldest First</option>
@@ -200,163 +208,163 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl p-6 border border-blue-200/50 transform hover:-translate-y-1 transition-all duration-300">
             <div className="flex items-center">
-              <div className="p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-semibold text-blue-700">Total Applications</p>
-                <p className="text-3xl font-bold text-blue-900">{stats.total}</p>
+              <div className="ml-5">
+                <p className="text-sm font-bold text-blue-700 uppercase tracking-wide">Total Applications</p>
+                <p className="text-4xl font-bold text-blue-900 group-hover:scale-110 transition-transform duration-300">{stats.total}</p>
               </div>
             </div>
           </div>
 
           <div className="group bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl shadow-lg hover:shadow-xl p-6 border border-yellow-200/50 transform hover:-translate-y-1 transition-all duration-300">
             <div className="flex items-center">
-              <div className="p-3 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-4 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-semibold text-yellow-700">Pending</p>
-                <p className="text-3xl font-bold text-yellow-900">{stats.pending}</p>
+              <div className="ml-5">
+                <p className="text-sm font-bold text-yellow-700 uppercase tracking-wide">Pending</p>
+                <p className="text-4xl font-bold text-yellow-900 group-hover:scale-110 transition-transform duration-300">{stats.pending}</p>
               </div>
             </div>
           </div>
 
           <div className="group bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg hover:shadow-xl p-6 border border-green-200/50 transform hover:-translate-y-1 transition-all duration-300">
             <div className="flex items-center">
-              <div className="p-3 bg-gradient-to-r from-green-500 to-green-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-4 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-semibold text-green-700">Approved</p>
-                <p className="text-3xl font-bold text-green-900">{stats.approved}</p>
+              <div className="ml-5">
+                <p className="text-sm font-bold text-green-700 uppercase tracking-wide">Approved</p>
+                <p className="text-4xl font-bold text-green-900 group-hover:scale-110 transition-transform duration-300">{stats.approved}</p>
               </div>
             </div>
           </div>
 
           <div className="group bg-gradient-to-br from-red-50 to-red-100 rounded-2xl shadow-lg hover:shadow-xl p-6 border border-red-200/50 transform hover:-translate-y-1 transition-all duration-300">
             <div className="flex items-center">
-              <div className="p-3 bg-gradient-to-r from-red-500 to-red-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-4 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-semibold text-red-700">Rejected</p>
-                <p className="text-3xl font-bold text-red-900">{stats.rejected}</p>
+              <div className="ml-5">
+                <p className="text-sm font-bold text-red-700 uppercase tracking-wide">Rejected</p>
+                <p className="text-4xl font-bold text-red-900 group-hover:scale-110 transition-transform duration-300">{stats.rejected}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
-          <div className="px-6 py-5 border-b border-gray-200/50 bg-gradient-to-r from-gray-50 to-gray-100">
-            <h2 className="text-2xl font-bold text-gray-900">Recent Applications</h2>
-            <p className="text-gray-600 mt-1">Review and manage loan applications</p>
+        <div className="glass rounded-3xl shadow-2xl border border-white/30 overflow-hidden">
+          <div className="px-8 py-6 border-b border-gray-200/50 bg-gradient-to-r from-blue-50/80 to-teal-50/80">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Recent Applications</h2>
+            <p className="text-gray-700 text-lg font-medium">Review and manage loan applications</p>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200/50">
-              <thead className="bg-gradient-to-r from-blue-50 to-teal-50">
+            <table className="min-w-full divide-y divide-gray-200/50 text-sm sm:text-base">
+              <thead className="bg-gradient-to-r from-blue-50/80 to-teal-50/80">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Loan ID</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Applicant</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Amount</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Sector</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Date</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Actions</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Loan ID</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Applicant</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Amount</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Sector</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Date</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Status</th>
+                  <th className="px-8 py-5 text-left text-xs font-bold text-blue-700 uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-100">
+              <tbody className="bg-white/50 divide-y divide-gray-100">
                 {applications.filter(app =>
                   app.user_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   app.user_email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   app.id.toLowerCase().includes(searchTerm.toLowerCase())
                 ).map((app) => (
-                  <tr key={app.id} className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 transition-all duration-200">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <tr key={app.id} className="hover:bg-gradient-to-r hover:from-blue-50/80 hover:to-teal-50/80 transition-all duration-300 hover:shadow-lg">
+                    <td className="px-8 py-5 whitespace-nowrap text-sm text-gray-900">
                       <button
                         onClick={() => navigator.clipboard.writeText(app.id)}
-                        className="flex items-center gap-2 hover:bg-blue-100 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md"
+                        className="flex items-center gap-3 hover:bg-blue-100/80 px-4 py-3 rounded-xl transition-all duration-300 hover:shadow-md hover:scale-105"
                         title="Click to copy full ID"
                       >
-                        <span className="font-mono text-xs">{app.id.slice(0, 8)}...</span>
-                        <svg className="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="font-mono text-sm font-bold">{app.id.slice(0, 8)}...</span>
+                        <svg className="h-5 w-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                       </button>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-8 py-5 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-500 to-teal-600 flex items-center justify-center shadow-lg">
-                          <span className="text-white font-bold text-sm">
+                        <div className="h-14 w-14 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-teal-600 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+                          <span className="text-white font-bold text-lg">
                             {app.user_name?.charAt(0).toUpperCase() || 'U'}
                           </span>
                         </div>
-                        <div className="ml-4">
-                          <div className="text-sm font-semibold text-gray-900">{app.user_name}</div>
-                          <div className="text-sm text-gray-500">{app.user_email}</div>
+                        <div className="ml-5">
+                          <div className="text-base font-bold text-gray-900">{app.user_name}</div>
+                          <div className="text-sm text-gray-600 font-medium">{app.user_email}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
+                    <td className="px-8 py-5 whitespace-nowrap text-lg font-bold text-gray-900">
                       ${app.amount_requested.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full shadow-sm ${
+                    <td className="px-8 py-5 whitespace-nowrap">
+                      <span className={`inline-flex px-4 py-2 text-sm font-bold rounded-full shadow-lg ${
                         app.sector === 'formal' ? 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800' : 'bg-gradient-to-r from-green-100 to-green-200 text-green-800'
                       }`}>
                         {app.sector}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    <td className="px-8 py-5 whitespace-nowrap text-sm text-gray-700 font-medium">
                       {new Date(app.created_at).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full shadow-sm ${getStatusColor(app.status)}`}>
+                    <td className="px-8 py-5 whitespace-nowrap">
+                      <span className={`inline-flex px-4 py-2 text-sm font-bold rounded-full shadow-lg ${getStatusColor(app.status)}`}>
                         {app.status}
                       </span>
                     </td>
-                    <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <div className="flex flex-col sm:flex-row gap-2">
+                    <td className="px-6 sm:px-8 py-5 whitespace-nowrap text-sm font-medium">
+                      <div className="flex flex-col sm:flex-row gap-3">
                         <button
                           onClick={() => navigate(`/review/${app.id}`)}
-                          className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5"
+                          className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 hover:scale-105"
                         >
-                          Review
+                          👁️ Review
                         </button>
                         {app.status === 'pending' && (
                           <>
                             <button
                               onClick={() => updateStatus(app.id, 'approved')}
                               disabled={updatingStatus === app.id}
-                              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 disabled:transform-none disabled:hover:shadow-none flex items-center justify-center"
+                              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 disabled:transform-none disabled:hover:shadow-none flex items-center justify-center"
                             >
                               {updatingStatus === app.id ? (
-                                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                               ) : (
-                                '✓ Approve'
+                                '✅ Approve'
                               )}
                             </button>
                             <button
                               onClick={() => updateStatus(app.id, 'rejected')}
                               disabled={updatingStatus === app.id}
-                              className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 disabled:transform-none disabled:hover:shadow-none flex items-center justify-center"
+                              className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 disabled:transform-none disabled:hover:shadow-none flex items-center justify-center"
                             >
                               {updatingStatus === app.id ? (
-                                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                               ) : (
-                                '✗ Reject'
+                                '❌ Reject'
                               )}
                             </button>
                           </>

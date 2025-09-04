@@ -38,6 +38,9 @@ const SignUp = () => {
         </div>
         <div className="max-w-lg w-full glass rounded-3xl shadow-2xl border border-white/30 p-10 text-center animate-scale-in">
           <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl animate-glow">
+        </div>
+        <div className="max-w-lg w-full glass rounded-3xl shadow-2xl border border-white/30 p-10 text-center animate-scale-in">
+          <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl animate-glow">
             <CheckCircle className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">
@@ -155,6 +158,7 @@ const SignUp = () => {
                 </svg>
               </span>
             )}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
           </button>
         </form>
