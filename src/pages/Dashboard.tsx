@@ -157,6 +157,14 @@ const Dashboard = () => {
         <div className="w-[500px] h-[500px] bg-gradient-to-tr from-teal-400 via-purple-400 to-blue-400 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
       </div>
 
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 -z-10 opacity-20">
+        <div className="w-[600px] h-[600px] bg-gradient-to-br from-purple-400 via-blue-400 to-teal-400 rounded-full blur-3xl animate-float"></div>
+      </div>
+      <div className="absolute bottom-0 left-0 -z-10 opacity-20">
+        <div className="w-[500px] h-[500px] bg-gradient-to-tr from-teal-400 via-purple-400 to-blue-400 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="text-center">
