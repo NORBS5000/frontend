@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import ProfileDropdown from './ProfileDropdown'
-import { Heart } from 'lucide-react'
+import { Heart, Bell, Search } from 'lucide-react'
 
 const Navbar = () => {
   const { user } = useAuth()
@@ -9,20 +9,34 @@ const Navbar = () => {
   if (!user) return null
 
   return (
-    <nav className="bg-gradient-to-r from-blue-500 to-teal-600 shadow-lg border-b border-blue-400/20 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-              <Heart className="w-5 h-5 text-white" />
+    <nav className="glass sticky top-0 z-50 border-b border-white/20 shadow-soft">
+      <div className="container-fluid">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-glow transition-all duration-300 hover:scale-110">
+              <Heart className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white">MediLoan</h1>
-              <p className="text-xs text-blue-100 hidden sm:block">Healthcare Financial Support</p>
+              <h1 className="text-2xl font-bold text-gradient-primary">MediLoan</h1>
+              <p className="text-xs text-gray-600 hidden sm:block font-medium">Healthcare Financial Support</p>
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-3">
+              <div className="relative">
+                <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="pl-10 pr-4 py-2 bg-white/60 backdrop-blur-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 w-64"
+                />
+              </div>
+              <button className="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200">
+                <Bell className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+              </button>
+            </div>
             <ProfileDropdown />
           </div>
         </div>

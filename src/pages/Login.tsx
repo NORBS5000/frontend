@@ -29,51 +29,51 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-teal-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-teal-50 p-4 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 -z-10 opacity-20">
-        <div className="w-96 h-96 bg-gradient-to-br from-blue-400 to-teal-400 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 -z-10 opacity-30">
+        <div className="w-[600px] h-[600px] bg-gradient-to-br from-blue-400 via-purple-400 to-teal-400 rounded-full blur-3xl animate-float"></div>
       </div>
-      <div className="absolute bottom-0 left-0 -z-10 opacity-20">
-        <div className="w-96 h-96 bg-gradient-to-tr from-teal-400 to-blue-400 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 -z-10 opacity-30">
+        <div className="w-[500px] h-[500px] bg-gradient-to-tr from-teal-400 via-blue-400 to-purple-400 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-md w-full bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200/50 p-8 animate-fade-in">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+      <div className="max-w-lg w-full glass rounded-3xl shadow-2xl border border-white/30 p-10 animate-scale-in">
+        <div className="text-center mb-10">
+          <div className="w-20 h-20 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl animate-glow">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-teal-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-gradient-primary mb-3">
             Welcome Back
           </h2>
-          <p className="text-gray-600 mt-2">Sign in to access your MediLoan account</p>
+          <p className="text-gray-700 text-lg font-medium">Sign in to access your MediLoan account</p>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm animate-slide-down">
+          <div className="mb-8 p-5 bg-red-50/80 backdrop-blur-sm border border-red-200 rounded-2xl text-red-700 text-sm animate-slide-down shadow-lg">
             <div className="flex items-center">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              {error}
+              <span className="font-medium">{error}</span>
             </div>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-8">
           <div className="group">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="form-label text-base">
               Email Address
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Mail className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-all duration-300" />
               </div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/60 backdrop-blur-sm"
+                className="form-input pl-12 py-4 text-lg"
                 placeholder="Enter your email"
                 required
               />
@@ -81,27 +81,27 @@ const Login = () => {
           </div>
 
           <div className="group">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="form-label text-base">
               Password
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Lock className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-all duration-300" />
               </div>
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/60 backdrop-blur-sm"
+                className="form-input pl-12 pr-14 py-4 text-lg"
                 placeholder="Enter your password"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-all duration-200 hover:scale-110"
               >
-                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
               </button>
             </div>
           </div>
@@ -109,30 +109,31 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="group w-full bg-gradient-to-r from-blue-500 to-teal-600 text-white py-3 px-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 disabled:transform-none disabled:hover:shadow-lg flex items-center justify-center"
+            className="group w-full bg-gradient-to-r from-blue-500 via-purple-500 to-teal-600 text-white py-4 px-6 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-400 disabled:transform-none disabled:hover:shadow-xl flex items-center justify-center relative overflow-hidden"
           >
             {loading ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                Signing In...
-              </>
+              <span className="flex items-center">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
+                <span className="loading-dots">Signing In</span>
+              </span>
             ) : (
-              <>
-                Sign In
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="relative z-10 flex items-center">
+                🚀 Sign In
+                <svg className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
-              </>
+              </span>
             )}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
           </button>
         </form>
 
-        <div className="mt-8 text-center">
-          <p className="text-gray-600">
+        <div className="mt-10 text-center">
+          <p className="text-gray-700 text-lg font-medium">
             Don't have an account?{' '}
             <Link
               to="/signup"
-              className="text-blue-600 hover:text-teal-600 font-semibold transition-colors duration-200 hover:underline"
+              className="text-blue-600 hover:text-teal-600 font-bold transition-all duration-200 hover:underline hover:scale-105 inline-block"
             >
               Create one here
             </Link>
