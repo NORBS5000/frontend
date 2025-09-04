@@ -60,13 +60,13 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50">
       {/* Emergency Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white py-3 px-4 sm:py-2">
+      <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white py-3 px-4 sm:py-2 animate-pulse">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center text-xs sm:text-sm font-medium gap-2 sm:gap-0">
-          <AlertCircle className="w-4 h-4 mr-2" />
+          <AlertCircle className="w-4 h-4 mr-2 animate-bounce" />
           Medical Emergency? Get instant approval in under 2 minutes
-          <button 
+          <button
             onClick={() => setShowSectorModal(true)}
-            className="sm:ml-4 bg-white text-blue-600 px-4 py-2 rounded-full text-xs font-semibold hover:bg-gray-100"
+            className="sm:ml-4 bg-white text-blue-600 px-4 py-2 rounded-full text-xs font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             Apply Now
           </button>
@@ -172,25 +172,25 @@ const Home: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 px-4 sm:px-0">
               <button
                 onClick={() => setShowSectorModal(true)}
-                className="group bg-gradient-to-r from-blue-500 to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center w-full sm:w-auto justify-center"
+                className="group bg-gradient-to-r from-blue-500 to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 flex items-center w-full sm:w-auto justify-center animate-pulse hover:animate-none"
               >
                 Get Medical Loan
-                <Heart className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
+                <Heart className="w-5 h-5 ml-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
               </button>
-              
+
               <button
                 onClick={() => navigate('/assess-medical-needs')}
-                className="bg-gradient-to-r from-teal-500 to-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center w-full sm:w-auto justify-center"
+                className="group bg-gradient-to-r from-teal-500 to-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 flex items-center w-full sm:w-auto justify-center"
               >
-                <Stethoscope className="w-5 h-5 mr-2" />
+                <Stethoscope className="w-5 h-5 mr-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
                 Assess Medical Needs
               </button>
-              
+
               <button
                 onClick={() => navigate('/loan/pay')}
-                className="bg-white text-gray-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-all duration-200 flex items-center w-full sm:w-auto justify-center"
+                className="group bg-white text-gray-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 flex items-center w-full sm:w-auto justify-center shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105"
               >
-                <DollarSign className="w-5 h-5 mr-2" />
+                <DollarSign className="w-5 h-5 mr-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" />
                 Pay Medical Loan
               </button>
             </div>
@@ -219,27 +219,27 @@ const Home: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-slide-up">
               Why Choose MediLoan?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-slide-up animation-delay-200">
               We understand medical emergencies can't wait. Fast, compassionate financial support when health matters most.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="group p-8 rounded-3xl bg-gray-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-blue-100 transform hover:-translate-y-1">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+              <div key={index} className={`group p-8 rounded-3xl bg-gray-50 hover:bg-white hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-blue-100 transform hover:-translate-y-2 hover:scale-105 animate-slide-up`} style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-xl">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 group-hover:text-gray-800 transition-colors">
                   {feature.description}
                 </p>
               </div>

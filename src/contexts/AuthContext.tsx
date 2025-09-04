@@ -13,14 +13,14 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<any>(null)
   const [isAdmin, setIsAdmin] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
-      if (session?.user) {
+      if (session?.user?.email) {
         checkUserRole(session.user.email)
       }
       setLoading(false)
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         setUser(session?.user ?? null)
-        if (session?.user) {
+        if (session?.user?.email) {
           checkUserRole(session.user.email)
         } else {
           setIsAdmin(false)
@@ -41,7 +41,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return () => subscription.unsubscribe()
   }, [])
 
-  const checkUserRole = async (email: string) => {
+  const checkUserRole = async (email: string | undefined) => {
+    if (!email) return;
     console.log('Checking email:', email);
     // Check if admin email
     const adminRole = email === 'norbertndayisenga@gmail.com'
